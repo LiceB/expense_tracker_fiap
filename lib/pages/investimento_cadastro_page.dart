@@ -185,10 +185,9 @@ class _InvestimentoCadastroPageState extends State<InvestimentoCadastroPage> {
                 .parse(valorController.text.replaceAll('R\$', ''));
 
             // Rendimento
-            final rendimento = NumberFormat.decimalPercentPattern(
-              locale: systemLocale.languageCode,
-              decimalDigits: 2,
-            ).parse(rendimentoController.text.replaceAll('%', ''));
+            final rendimento =
+                NumberFormat.percentPattern(systemLocale.languageCode)
+                    .parse(rendimentoController.text.replaceAll('%', ''));
 
             final userId = user?.id ?? '';
 

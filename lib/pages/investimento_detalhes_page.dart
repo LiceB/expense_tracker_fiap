@@ -1,6 +1,5 @@
 import 'package:expense_tracker/components/conta_item.dart';
 import 'package:expense_tracker/models/investimento.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -17,7 +16,8 @@ class _InvestimentoDetalhesPageState extends State<InvestimentoDetalhesPage> {
   Widget build(BuildContext context) {
     final investimento =
         ModalRoute.of(context)!.settings.arguments as Investimento;
-
+    double rendimentoEmPercentagem =
+        investimento.rendimento * investimento.valor;
     return Scaffold(
       appBar: AppBar(
         title: Text(investimento.nome),
@@ -37,8 +37,10 @@ class _InvestimentoDetalhesPageState extends State<InvestimentoDetalhesPage> {
             ),
             ListTile(
               title: const Text('Rendimento'),
-              subtitle: Text(NumberFormat.simpleCurrency(locale: 'pt_BR')
-                  .format(investimento.rendimento)),
+              subtitle: Text(
+                NumberFormat.simpleCurrency(locale: 'pt_BR')
+                    .format(rendimentoEmPercentagem),
+              ),
             ),
           ],
         ),
