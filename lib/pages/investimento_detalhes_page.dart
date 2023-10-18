@@ -40,37 +40,6 @@ class _InvestimentoDetalhesPageState extends State<InvestimentoDetalhesPage> {
               subtitle: Text(NumberFormat.simpleCurrency(locale: 'pt_BR')
                   .format(investimento.rendimento)),
             ),
-            LineChart(
-              LineChartData(
-                gridData: FlGridData(show: false),
-                titlesData: FlTitlesData(show: false),
-                borderData: FlBorderData(
-                  show: true,
-                  border: Border.all(color: const Color(0xff37434d), width: 1),
-                ),
-                minX: 0,
-                maxX: 7,
-                minY: 0,
-                maxY: 6,
-                lineBarsData: [
-                  LineChartBarData(
-                    spots: [
-                      FlSpot(0, 3),
-                      FlSpot(1, 1),
-                      FlSpot(2, 4),
-                      FlSpot(3, 2),
-                      FlSpot(4, 3),
-                      FlSpot(5, 5),
-                      FlSpot(6, 4),
-                    ],
-                    isCurved: false,
-                    color: Colors.blue,
-                    dotData: FlDotData(show: false),
-                    belowBarData: BarAreaData(show: false),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
       ),

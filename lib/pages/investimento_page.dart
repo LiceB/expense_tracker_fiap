@@ -62,7 +62,9 @@ class _InvestimentosPageState extends State<InvestimentosPage> {
                           final result = await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => InvestimentoCadastroPage(),
+                              builder: (context) => InvestimentoCadastroPage(
+                                investimentoParaEdicao: investimento,
+                              ),
                             ),
                           ) as bool?;
 
@@ -81,14 +83,25 @@ class _InvestimentosPageState extends State<InvestimentosPage> {
                         label: 'Editar',
                       ),
                       SlidableAction(
-                        onPressed: (context) async {},
+                        onPressed: (context) async {
+                          await investimentosRepo
+                              .excluirInvestimento(investimento.id);
+
+                          setState(() {
+                            investimentos.removeAt(index);
+                          });
+                        },
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        icon: Icons.delete,
+                        label: 'Remover',
                       ),
                     ],
                   ),
                   child: InvestimentoItem(
                     investimento: investimento,
                     onTap: () {
-                      Navigator.pushNamed(context, '/investimento-detalhe',
+                      Navigator.pushNamed(context, '/investimento-detalhes',
                           arguments: investimento);
                     },
                   ),
